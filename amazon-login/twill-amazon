@@ -1,0 +1,32 @@
+# Twill is a python web browser with HTML parsing functionality
+# You'll see below that the showforms method errors out
+# Amazon login form = awful
+
+[hypnos ~] twill-sh
+/media/sdk1/home/impaired/.local/lib/python2.6/site-packages/twill/other_packages/_mechanize_dist/_auth.py:14: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import re, base64, urlparse, posixpath, md5, sha, sys, copy
+/media/sdk1/home/impaired/.local/lib/python2.6/site-packages/twill/other_packages/_mechanize_dist/_auth.py:14: DeprecationWarning: the sha module is deprecated; use the hashlib module instead
+  import re, base64, urlparse, posixpath, md5, sha, sys, copy
+
+ -= Welcome to twill! =-
+
+current page:  *empty page*
+>> go https://www.amazon.ca/ap/signin?_encoding=UTF8&openid.assoc_handle=caflex&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.pape=http%3A%2F%2Fspecs.openid.net%2Fextensions%2Fpape%2F1.0&openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.ca%2Fgp%2Fcss%2Fhomepage.html%3Fie%3DUTF8%26ref_%3Dgno_yam_ya
+==> at https://www.amazon.ca/ap/signin?_encoding=UTF8&openid.assoc_handle=caflex&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.pape=http%3A%2F%2Fspecs.openid.net%2Fextensions%2Fpape%2F1.0&openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.ca%2Fgp%2Fcss%2Fhomepage.html%3Fie%3DUTF8%26ref_%3Dgno_yam_ya
+current page: https://www.amazon.ca/ap/signin?_encoding=UTF8&openid.assoc_handle=caflex&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.pape=http%3A%2F%2Fspecs.openid.net%2Fextensions%2Fpape%2F1.0&openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.ca%2Fgp%2Fcss%2Fhomepage.html%3Fie%3DUTF8%26ref_%3Dgno_yam_ya
+>> showforms
+Traceback (most recent call last):
+  File "/media/sdk1/home/impaired/.local/bin/twill-sh", line 9, in <module>
+    load_entry_point('twill==0.9', 'console_scripts', 'twill-sh')()
+  File "/media/sdk1/home/impaired/.local/lib/python2.6/site-packages/twill/shell.py", line 383, in main
+    shell.cmdloop(welcome_msg)
+  File "/usr/lib/python2.6/cmd.py", line 142, in cmdloop
+    stop = self.onecmd(line)
+  File "/usr/lib/python2.6/cmd.py", line 219, in onecmd
+    return func(arg)
+  File "/media/sdk1/home/impaired/.local/lib/python2.6/site-packages/twill/shell.py", line 42, in do_cmd
+    print '\nERROR: %s\n' % (str(e),)
+  File "/usr/lib/python2.6/HTMLParser.py", line 59, in __str__
+    result = self.msg
+AttributeError: 'ParseError' object has no attribute 'msg'
+
