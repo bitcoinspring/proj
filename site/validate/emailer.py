@@ -3,7 +3,7 @@ import smtplib
 def send(TO, code):
 
     FROM = 'bitcoinspring@gmail.com'
-    passwd = 'THISismycurrentareacode=604'
+    passwd = 'obfuscated'
     
     SUBJECT = 'BITCOIN SPRING --- ORDER SUCCESSFUL'
     BODY = 'Hello,\n\nYour recent transaction with us has reached six (6) confirmations.\n\n'
