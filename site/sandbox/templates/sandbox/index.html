@@ -12,12 +12,24 @@
                     var message = '\x02\x1fAlert:\x1f\x02 ' + r.ip + ' accessed \x02bitcoinspring\x02 page from ' + r.city + ', ' + r.region_name + ', ' + r.country_name;
                     var channel = '#devel';
                     var output = channel + ' ' + message;
-                    $.post('http://bitcoinspring.com:3500/send/', 
+                    $.post('http://bitcoinspring.com:3500/send/',
                         { 'msg': output });
                 });
             });
         </script>
-
+        <script>
+            $(document).ready(function(){
+                $('#id_email').keyup(function() {
+                    var inputs = $('#id_email').val()
+                    var emails = {{ emails|safe }};
+                        $.each(emails, function(i, email) {
+                            if (inputs == email){
+                                alert('email address registered');
+                            }
+                        });
+                });
+            });
+        </script>
     </head>
 
     <body>
@@ -26,6 +38,10 @@
         {{ form.as_p }}
         <input type="submit" value="Order" />
         </form>
+
+        <a href="/post/">click</a>
+
     </body>
 
 </html>
+

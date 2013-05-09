@@ -2,9 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from home.forms import OrderForm
 from django.utils import timezone
-import emailer
+import agent, emailer
 
 PWD = '/media/sdk1/home/impaired/private/projects/bitcoinspring/home/'
+address = '17UJbo6TFtCWopvQTY89yD2xSWBhgxuL6k'
 
 def home(r):
     f = OrderForm()
@@ -19,6 +20,7 @@ def order(r):
     # Checks POST method
     if r.method == 'POST':
 
+        # Instantiate form
         f = OrderForm(r.POST)
 
         # Checks if form submitted was valid
@@ -39,6 +41,8 @@ def order(r):
             print '    --> GC Amount: ' + amount
             print '\n'
             
+            agent.create('camus')
+
             # Fetch Amazon GC code
             with open(PWD+'codes','r') as f:
                 codes = f.read().splitlines()
@@ -53,9 +57,13 @@ def order(r):
             with open(PWD+'codes', 'w') as f:
                 f.write(codes)
                 f.close()
-
+    
             # Sends GC code to customer
-            emailer.send(email, amount, code)
+            # email = their email address
+            # username = their chosen username
+            # amount = the GC amount
+            # code = Amazon GC code
+            emailer.send(email, username, amount, code)
 
             return HttpResponse('Order success!')
             

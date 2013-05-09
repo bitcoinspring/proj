@@ -1,0 +1,43 @@
+import urllib, urllib2
+
+class Requester(urllib2.Request):
+    GET = 'get'
+    POST = 'put'
+    PUT = 'put'
+    DELETE = 'delete'
+
+    def __init__(self, url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None):
+        urllib2.Request.__init__(self, url, data, headers, origin_req_host, unverifiable)
+        self.method = method
+
+    def get_method(self):
+        if self.method:
+            return self.method
+
+        return urllib2.Request.get_method(self)
+
+o = urllib2.build_opener()
+o.addheaders = [('Authorization', '33e600d1a962034011003c2308ef7bdb9c56a32d')]
+
+def agents():
+    url = 'http://www.bitcoinmonitor.net/api/v1/agent/'
+    u = o.open(url)
+    print u.read()
+
+def create(name):
+    url = 'http://www.bitcoinmonitor.net/api/v1/agent/'
+    params = {
+                'name': name,
+                'watch_type': '3',
+             }
+    params = urllib.urlencode(params)
+    u = o.open(url, params)
+
+def delete(id):
+    url = 'http://www.bitcoinmonitor.net/api/v1/agent/{0}/'.format(id)
+    req = Requester(url, method=Requester.DELETE)
+    resp = o.open(req)
+    print resp.read()
+
+
+delete('625')
